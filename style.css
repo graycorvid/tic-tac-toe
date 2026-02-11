@@ -358,7 +358,7 @@ body {
   display: grid;
   align-items: center;
   justify-items: center;
-  grid-template-rows: 10% 80%;
+  grid-template-rows: 15% 70% 15%;
 }
 
 h1 {
@@ -373,6 +373,20 @@ h1 {
 .mark {
   width: 10em;
   height: 10em;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.mark p {
+  margin: 0;
+  font-size: 8em;
+}
+.omark {
+  color: firebrick;
+}
+.xmark {
+  color: midnightblue;
 }
 
 .mark:nth-child(1),
