@@ -80,21 +80,3 @@ const game = (() => {
 
   return { player1, player2, placeMark, checkResult };
 })();
-
-game.placeMark(0, game.player1.mark); //
-game.placeMark(1, game.player2.mark);
-game.placeMark(3, game.player1.mark);
-game.placeMark(4, game.player2.mark);
-game.placeMark(5, game.player1.mark);
-game.placeMark(8, game.player2.mark);
-game.placeMark(6, game.player1.mark);
-console.log(gameboard.gameboardArr);
-
-//   [0, 1, 2],
-//   [3, 4, 5],
-//   [6, 7, 8],
-//   [0, 3, 6],
-//   [1, 4, 7],
-//   [2, 5, 8],
-//   [0, 4, 8],
-//   [2, 4, 6],
