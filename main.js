@@ -1,4 +1,6 @@
 "use strict";
+const boardDiv = document.querySelector(".board");
+const start = document.querySelector(".start");
 const gameboard = (() => {
   return {
     gameboardArr: ["", "", "", "", "", "", "", "", ""],
@@ -16,11 +18,20 @@ const winningCombos = [
   [2, 4, 6],
 ];
 
-const displayController = (() => {})();
-
 function Player(name, mark) {
   return { name, mark };
 }
+
+const displayController = (() => {
+  const drawMark = (index, mark) => {
+    let p = document.createElement("p");
+    p.innerText = mark;
+    p.classList.add(mark === "X" ? "xmark" : "omark");
+    let div = document.querySelector(`div.index${index}`);
+    div.append(p);
+  };
+  return { drawMark };
+})();
 
 const game = (() => {
   const player1 = Player("User", "X");
@@ -28,31 +39,35 @@ const game = (() => {
   let gameCounter = 0;
   let message;
   const placeMark = (position, mark) => {
-    gameboard.gameboardArr[position] = mark;
-    checkResult();
+    if (gameboard.gameboardArr[position] === "") {
+      gameboard.gameboardArr[position] = mark;
+      gameCounter++;
+      checkResult();
+      displayController.drawMark(position, mark);
+    } else {
+      console.log("Spot already taken!");
+    }
   };
 
   const checkBoard = () => {
     let arrX = [];
     let arrO = [];
-    gameboard.gameboardArr.map((item, index) => {
+    gameboard.gameboardArr.forEach((item, index) => {
       if (item === "X") {
         arrX.push(index);
         console.log(item, index);
       }
-    });
 
-    gameboard.gameboardArr.map((item, index) => {
       if (item === "O") {
         arrO.push(index);
         console.log(item, index);
       }
     });
+
     return { arrX, arrO };
   };
 
   const checkResult = () => {
-    gameCounter++;
     let { arrX, arrO } = checkBoard();
 
     const xWinner = winningCombos.some((combination) => {
