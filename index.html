@@ -16,18 +16,26 @@
     <header><h1>TIC TAC CROW</h1></header>
     <main>
       <div class="board">
-        <div class="mark index0"></div>
-        <div class="mark index1"></div>
-        <div class="mark index2"></div>
-        <div class="mark index3"></div>
-        <div class="mark index4"></div>
-        <div class="mark index5"></div>
-        <div class="mark index6"></div>
-        <div class="mark index7"></div>
-        <div class="mark index8"></div>
+        <div class="mark" data-id="0"></div>
+        <div class="mark" data-id="1"></div>
+        <div class="mark" data-id="2"></div>
+        <div class="mark" data-id="3"></div>
+        <div class="mark" data-id="4"></div>
+        <div class="mark" data-id="5"></div>
+        <div class="mark" data-id="6"></div>
+        <div class="mark" data-id="7"></div>
+        <div class="mark" data-id="8"></div>
       </div>
     </main>
-    <footer><button class="start">start</button></footer>
+    <footer>
+      <form onsubmit="return false">
+        <label for="player1">❌ Player 1:</label>
+        <input type="text" name="player1" class="player1" required />
+        <label for="player2">⭕️ Player 2:</label>
+        <input type="text" name="player2" class="player2" required />
+        <button type="submit" class="start">start</button>
+      </form>
+    </footer>
     <script src="./main.js"></script>
   </body>
 </html>
