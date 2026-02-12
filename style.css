@@ -382,11 +382,27 @@ h1 {
   margin: 0;
   font-size: 8em;
 }
+
 .omark {
   color: firebrick;
 }
+
+.oactive {
+  border-color: firebrick;
+}
+
 .xmark {
   color: midnightblue;
+}
+
+.xactive {
+  border-color: mediumblue;
+}
+
+.active {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 2%;
 }
 
 .mark:nth-child(1),
@@ -408,4 +424,26 @@ h1 {
 .mark:nth-child(5),
 .mark:nth-child(6) {
   border-bottom: rgb(28, 36, 46) solid 4px;
+}
+
+.mark-active {
+  background-color: rgb(71, 80, 206);
+}
+
+input {
+  padding: 6px;
+}
+label {
+  font-size: 1.2em;
+  padding-left: 10px;
+}
+.start {
+  margin: 0 20px;
+  padding: 6px 20px;
+}
+
+form p {
+  display: inline;
+  padding: 6px 20px;
+  font-size: 1.2em;
 }
