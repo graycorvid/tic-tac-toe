@@ -3,9 +3,14 @@ let gameStarted = false;
 let currentPlayer = 1;
 const boardDiv = document.querySelector(".board");
 const start = document.querySelector(".start");
+const result = document.querySelector(".result");
+const messagePara = document.querySelector(".message");
 const playerOneInput = document.querySelector("input.player1");
 const playerTwoInput = document.querySelector("input.player2");
+const playerOneDisplay = document.querySelector("h2.player1");
+const playerTwoDisplay = document.querySelector("h2.player2");
 const form = document.querySelector("form");
+const footer = document.querySelector("footer");
 const gameboard = (() => {
   return {
     gameboardArr: ["", "", "", "", "", "", "", "", ""],
@@ -29,25 +34,21 @@ function Player(name, mark) {
 
 const displayController = (() => {
   const drawMark = (index, mark) => {
-    console.log(index, mark);
     let p = document.createElement("p");
     p.innerText = mark;
     p.classList.add(mark === "X" ? "xmark" : "omark");
     let div = document.querySelector(`div[data-id="${index}"]`);
-    console.log(div, p);
     div.append(p);
-    console.log(currentPlayer);
   };
 
   const showPlayers = (name1, name2) => {
-    let p1 = document.createElement("p");
-    let p2 = document.createElement("p");
-    p1.innerText = name1;
-    p2.innerText = name2;
-    p1.classList.add("one", "xactive", "active");
-    p2.classList.add("two");
-    form.replaceChild(p1, playerOneInput);
-    form.replaceChild(p2, playerTwoInput);
+    playerOneInput.disabled = true;
+    playerTwoInput.disabled = true;
+    playerOneDisplay.innerText = name1;
+    playerTwoDisplay.innerText = name2;
+    playerOneDisplay.classList.add("one", "xactive", "active");
+    playerTwoDisplay.classList.add("two");
+
     start.innerText = "Restart";
   };
 
@@ -132,12 +133,10 @@ const game = (() => {
     gameboard.gameboardArr.forEach((item, index) => {
       if (item === "X") {
         arrX.push(index);
-        console.log(item, index);
       }
 
       if (item === "O") {
         arrO.push(index);
-        console.log(item, index);
       }
     });
 
@@ -157,21 +156,32 @@ const game = (() => {
     });
 
     if (xWinner) {
-      message = `WINNER: ${player1.name}`;
-      console.log("X WINNER");
+      message = `WINNER: ${player1.name} 🏆`;
+      showWinner(message);
     } else if (oWinner) {
-      message = `WINNER: ${player2.name}`;
-      console.log("O WINNER");
+      message = `WINNER: ${player2.name} 🏆`;
+      showWinner(message);
     } else if (gameCounter === 9) {
       message = "IT'S A TIE";
-      console.log("NOBODY WON");
+      showWinner(message);
     }
 
     return message;
   };
 
+  const showWinner = (winner) => {
+    result.classList.remove("hidden");
+    messagePara.innerText = winner;
+  };
   const restartGame = () => {
-    //gameStarted = false;
+    gameStarted = false;
+    document.querySelectorAll(".board p").forEach((p) => p.remove());
+    gameboard.gameboardArr = ["", "", "", "", "", "", "", "", ""];
+    message = "";
+    result.classList.add("hidden");
+    gameCounter = 0;
+    currentPlayer = 1;
+    displayController.changePlayerUI();
   };
 
   return {

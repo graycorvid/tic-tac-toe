@@ -361,8 +361,18 @@ body {
   grid-template-rows: 15% 70% 15%;
 }
 
+header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
 h1 {
   text-transform: uppercase;
+}
+h2 {
+  padding: 1em 4em;
+  font-size: 1.2em;
 }
 
 .board {
@@ -442,8 +452,26 @@ label {
   padding: 6px 20px;
 }
 
-form p {
-  display: inline;
-  padding: 6px 20px;
-  font-size: 1.2em;
+.result {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 50vw;
+  height: 15vw;
+  padding: 1em 1em;
+  font-size: 3em;
+  text-align: center;
+  background-color: rgb(148, 183, 248);
+  border: solid 0.5px rgba(35, 75, 150, 0.688);
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 8px 8px 33px 2px rgb(43, 52, 148);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hidden {
+  display: none;
 }
