@@ -12,8 +12,6 @@ A simple [Tic Tac Toe](https://tic-tac-crow.netlify.app/) game built with vanill
 - Tie detection
 - Dynamic UI updates (active player highlighting, result display)
 
----
-
 ## Project Structure
 
 ### `gameboard`
